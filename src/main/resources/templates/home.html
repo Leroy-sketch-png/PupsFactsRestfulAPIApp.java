@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="home" content="width=device-width, initial-scale=1.0">
     <title>Dog Facts</title>
     <style>
         body {
@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             font-size: 18px;
-            background-image: url('./dog.jpg');
+            background-image: url('https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -36,7 +36,7 @@
             padding: 20px;
             max-width: 800px;
             margin: 150px auto 20px;
-            background: white;
+            background:  rgba(255, 255, 255, 0.6);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
             z-index: 1;
@@ -52,7 +52,6 @@
             font-size: 18px;
         }
     </style>
-
 </head>
 
 <body>
@@ -62,54 +61,10 @@
     </header>
 
     <div class="container" id="facts-container">
-        <p>Loading facts...</p>
+        <th:block th:each="fact : ${facts}">
+            <div class="fact" th:text="${fact}"></div>
+        </th:block>
     </div>
-
-    <!-- <div class="container">
-        <div class="fact">
-            <strong>Fact 1:</strong> Dogs have a sense of smell that is 40 times stronger than humans.
-        </div>
-        <div class="fact">
-            <strong>Fact 2:</strong> The Basenji dog is known as the "barkless dog" because it doesn't bark, but it can
-            yodel.
-        </div>
-        <div class="fact">
-            <strong>Fact 3:</strong> Dogs can understand up to 250 words and gestures, making them as smart as a
-            two-year-old child.
-        </div>
-        <div class="fact">
-            <strong>Fact 4:</strong> A Greyhound can run as fast as 45 miles per hour, making it the fastest dog breed.
-        </div>
-        <div class="fact">
-            <strong>Fact 5:</strong> The Newfoundland breed has webbed feet and is an excellent swimmer.
-        </div>
-    </div> -->
-
-    <script>
-        async function fetchDogFacts() {
-            const container = document.getElementById('facts-container');
-            try {
-                const response = await fetch('https://kinduff.github.io/dog-api/facts.json');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                const data = await response.json();
-                container.innerHTML = '';
-                // Lấy 10 sự thật đầu tiên
-                data.facts.slice(0, 10).forEach(fact => {
-                    const factDiv = document.createElement('div');
-                    factDiv.className = 'fact';
-                    factDiv.innerHTML = `<strong>Fact:</strong> ${fact}`;
-                    container.appendChild(factDiv);
-                });
-            } catch (error) {
-                container.innerHTML = `<p style="color: red;">Failed to load facts: ${error.message}</p>`;
-            }
-        }
-
-        fetchDogFacts();
-    </script>
-
 </body>
 
 </html>
