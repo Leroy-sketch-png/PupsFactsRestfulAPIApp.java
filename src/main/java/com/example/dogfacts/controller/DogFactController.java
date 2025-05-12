@@ -12,11 +12,11 @@ import java.util.List;
 public class DogFactController {
 
     @Autowired
-    private DogFactService catFactService;
+    private DogFactService dogFactService;
 
     @GetMapping("/")
-    public String home(Model model) {
-        List<String> facts = catFactService.getCatFacts();
+    public String showDogFacts(Model model) {
+        List<String> facts = dogFactService.getDogFacts();
         model.addAttribute("facts", facts);
         return "home";
     }

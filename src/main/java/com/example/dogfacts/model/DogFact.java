@@ -1,10 +1,25 @@
 package com.example.dogfacts.model;
 
-public class DogFact {
-    private String fact;
+import lombok.Getter;
+import lombok.Setter;
 
-    // --- Constructors, getters, setters ---
-    public DogFact() {}
-    public String getFact() { return fact; }
-    public void setFact(String fact) { this.fact = fact; }
+@Getter
+@Setter
+public class DogFact {
+    private String id;
+    private String type;
+    private Attributes attributes;
+
+    public DogFact(String id, String type, Attributes attributes) {
+        this.id = id;
+        this.type = type;
+        this.attributes = attributes;
+    }
+
+    @Setter
+    @Getter
+    public static class Attributes {
+        private String body;
+
+    }
 }

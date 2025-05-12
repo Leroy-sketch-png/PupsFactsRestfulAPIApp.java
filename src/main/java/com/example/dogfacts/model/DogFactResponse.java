@@ -1,17 +1,12 @@
 package com.example.dogfacts.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
+@Getter
+@Setter
 public class DogFactResponse {
-    private List<String> data;
-
-    public DogFactResponse() {}
-
-    public List<String> getData() {
-        return data;
-    }
-
-    public void setData(List<String> data) {
-        this.data = data;
-    }
+    private List<DogFact> data;
 }
